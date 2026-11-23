@@ -1,0 +1,13 @@
+name: Hello github actions
+on: [push]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "hello hello"
+      - run: df -h
+      - run: ls -a
+      - run: uname -r
+      - run: echo "os check done!"
