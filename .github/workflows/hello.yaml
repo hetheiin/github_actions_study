@@ -4,6 +4,8 @@ on: [push]
 jobs:
   greet:
     runs-on: ubuntu-latest
+    env:
+      SOME: "something on your mind?"
     steps:
       - name: Say hello
         run: echo "hello hello"
@@ -11,3 +13,13 @@ jobs:
       - run: ls -a
       - run: uname -r
       - run: echo "os check done!"
+      - run: echo "${SOME}"
+  goodbye:
+    needs: greet
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "goodgoodbye"
+      - run: echo "${SOME}"
+      - run: echo "here is my secret ${{ secrets.VERY_SECRET }}"
+      - run: echo "here is important thing ${{ vars.SOMETHING_IMPORTANT }}"
+  
